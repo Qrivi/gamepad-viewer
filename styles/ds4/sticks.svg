@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 94 188" style="enable-background:new 0 0 94 188;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#0F0F0F;}
+	.st1{fill:#121212;}
+	.st2{fill:#141414;}
+	.st3{fill:#F0F0F0;}
+	.st4{fill:#EDEDED;}
+	.st5{fill:#EBEBEB;}
+</style>
+<path class="st0" d="M47,92.5C21.9,92.5,1.5,72.1,1.5,47S21.9,1.5,47,1.5S92.5,21.9,92.5,47S72.1,92.5,47,92.5z"/>
+<path class="st1" d="M47,3c24.3,0,44,19.7,44,44S71.3,91,47,91S3,71.3,3,47S22.7,3,47,3 M47,0C21,0,0,21,0,47s21,47,47,47
+	s47-21,47-47S73,0,47,0z"/>
+<circle class="st2" cx="47" cy="47" r="27.3"/>
+<path class="st3" d="M47,186.5c-25.1,0-45.5-20.4-45.5-45.5S21.9,95.5,47,95.5c25.1,0,45.5,20.4,45.5,45.5S72.1,186.5,47,186.5z"/>
+<path class="st4" d="M47,97c24.3,0,44,19.7,44,44s-19.7,44-44,44c-24.3,0-44-19.7-44-44S22.7,97,47,97 M47,94c-26,0-47,21-47,47
+	s21,47,47,47s47-21,47-47S73,94,47,94z"/>
+<ellipse transform="matrix(0.1735 -0.9848 0.9848 0.1735 -100.0161 162.8232)" class="st5" cx="47" cy="141" rx="27.3" ry="27.3"/>
+</svg>

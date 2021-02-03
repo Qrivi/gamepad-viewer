@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gamepad</title>
+        <link rel="stylesheet" href="app.css">
+        <script defer src="app.js"></script>
+    </head>
+    <body>
+        <div id="unsupported" class="warning">
+           <span>Browser does not support the Gamepad API.</span>
+        </div>
+        <div id="undetected" class="warning">
+            <span>No input from gamepad. Make sure it's connected.</span>
+        </div>
+        <div id="unloaded" class="warning">
+            <span>No stylesheets loaded. Gamepad won't be visible.</span>
+        </div>
+        <div id="gamepad">
+            <div class="triggers">
+                <div class="trigger left" data-button="6"></div>
+                <div class="trigger right" data-button="7"></div>
+            </div>
+            <div class="bumpers">
+                <div class="bumper left" data-button="4"></div>
+                <div class="bumper right" data-button="5"></div>
+            </div>
+            <div class="touchpad" data-button="17"></div>
+            <div class="meta" data-button="16"></div>
+            <div class="arrows">
+                <div class="arrow select" data-button="8"></div>
+                <div class="arrow start" data-button="9"></div>
+            </div>
+            <div class="buttons">
+                <div class="button a" data-button="0"></div>
+                <div class="button b" data-button="1"></div>
+                <div class="button x" data-button="2"></div>
+                <div class="button y" data-button="3"></div>
+            </div>
+            <div class="sticks">
+                <div class="stick left" data-button="10" data-axis-x="0" data-axis-y="1"></div>
+                <div class="stick right" data-button="11" data-axis-x="2" data-axis-y="3"></div>
+            </div>
+            <div class="dpad">
+                <div class="pad up" data-button="12"></div>
+                <div class="pad down" data-button="13"></div>
+                <div class="pad left" data-button="14"></div>
+                <div class="pad right" data-button="15"></div>
+            </div>
+        </div>
+    </body>
+</html>

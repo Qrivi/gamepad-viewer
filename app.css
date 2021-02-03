@@ -1,0 +1,38 @@
+body {
+    background: transparent;
+    box-sizing: border-box;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font: .9em/1.5em sans-serif;
+}
+
+.warning {
+    background: rgb(255, 177, 99);
+    box-shadow: 0 5px 10px rgb(155, 155, 155);
+    color:rgb(11,11,11);
+    border:  solid 3px rgb(255, 155, 55);
+    border-radius: 10px;
+    padding: 20px;
+    width: 242px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.warning span::before{
+    content: "⚠️";
+    font: 3em/1em sans-serif;
+    padding-right: 20px;
+    float: left;
+}
+
+#gamepad {
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

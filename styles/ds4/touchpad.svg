@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 263.9 302.4" style="enable-background:new 0 0 263.9 302.4;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;}
+	.st1{fill:#4C4C4C;}
+	.st2{fill:#EDEDED;}
+	.st3{fill:#F7F7F7;}
+	.st4{opacity:0.12;}
+	.st5{fill:url(#SVGID_1_);}
+	.st6{fill:#121212;}
+	.st7{fill:#080808;}
+	.st8{fill:url(#SVGID_2_);}
+</style>
+<pattern  y="302.4" width="71" height="71" patternUnits="userSpaceOnUse" id="b" viewBox="0 -71 71 71" style="overflow:visible;">
+	<g>
+		<rect y="-71" class="st0" width="71" height="71"/>
+		<path class="st0" d="M0-71h71V0H0V-71z"/>
+		<path class="st0" d="M0-71h71V0H0V-71z"/>
+		<path class="st1" d="M41.8-35.5c0,3.5-2.8,6.3-6.3,6.3s-6.3-2.8-6.3-6.3s2.8-6.3,6.3-6.3S41.8-39,41.8-35.5z"/>
+	</g>
+</pattern>
+<path class="st2" d="M263.7,156.6c-0.4-3.2-3.3-5.6-6.5-5.6H6.6c-3.2,0-6.1,2.3-6.5,5.6c-0.1,0.7-0.1,1.4-0.1,2.1v127.4
+	c0,8.9,7.2,16.1,16.1,16.1h231.6c8.9,0,16.1-7.2,16.1-16.1V158.7C263.8,157.9,263.8,157.2,263.7,156.6L263.7,156.6z"/>
+<path class="st3" d="M259.3,152.9c0-1-0.8-1.9-1.9-1.9H6.3c-1,0-1.9,0.8-1.9,1.9v129.2c0,8.6,7,15.6,15.6,15.6h223.8
+	c8.6,0,15.6-7,15.6-15.6V158.9C259.4,158.9,259.3,152.9,259.3,152.9z"/>
+<g class="st4">
+	<pattern  id="SVGID_1_" xlink:href="#b" patternTransform="matrix(0.1017 0 0 0.1017 -22269.9512 -4635.2603)"  class="st4">
+	</pattern>
+	<path class="st5" d="M4.4,282.1c0,8.6,7,15.6,15.6,15.6h223.8c8.6,0,15.6-7,15.6-15.6V175.5H4.6v106.6L4.4,282.1L4.4,282.1z"/>
+</g>
+<path class="st6" d="M263.8,5.4c-0.4-3.2-3.3-5.6-6.5-5.6H6.7c-3.2,0-6.1,2.3-6.5,5.6C0.1,6.1,0.1,6.8,0.1,7.5v127.4
+	c0,8.9,7.2,16.1,16.1,16.1h231.6c8.9,0,16.1-7.2,16.1-16.1V7.5C263.9,6.7,263.9,6,263.8,5.4L263.8,5.4z"/>
+<path class="st7" d="M259.4,1.7c0-1-0.8-1.9-1.9-1.9H6.4c-1,0-1.9,0.8-1.9,1.9v129.2c0,8.6,7,15.6,15.6,15.6h223.8
+	c8.6,0,15.6-7,15.6-15.6V7.7C259.5,7.7,259.4,1.7,259.4,1.7z"/>
+<g class="st4">
+	<pattern  id="SVGID_2_" xlink:href="#b" patternTransform="matrix(0.1017 0 0 0.1017 -22269.9512 -4635.2603)"  class="st4">
+	</pattern>
+	<path class="st8" d="M4.5,130.9c0,8.6,7,15.6,15.6,15.6h223.8c8.6,0,15.6-7,15.6-15.6V24.3H4.6v106.6L4.5,130.9L4.5,130.9z"/>
+</g>
+</svg>
