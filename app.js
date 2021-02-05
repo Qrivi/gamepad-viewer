@@ -25,12 +25,52 @@ class Gamepad {
 
     renderGamepad() {
         const gamepads = navigator.getGamepads()
-        if (!gamepads || !gamepads.length) return
-        const gamepad = gamepads[0]
+        if (!gamepads || !gamepads.length)
+            return
 
-        for (let i = 0; i < gamepad.buttons.length; i++)
-            document.querySelector(`[data-button="${i}"]`).dataset.pressed = gamepad.buttons[i].pressed
+        const gamepad = gamepads[0]
+        // Handle button presses
+        for (let i = 0; i < gamepad.buttons.length; i++) {
+            const button = document.querySelector(`[data-button="${i}"]`)
+            if (button) {
+                button.dataset.pressed = gamepad.buttons[i].pressed
+            }
+        }
+        // Handle joystick motion
+        for (let i = 0; i < gamepad.axes.length; i++) {
+            const axisX = document.querySelector(`[data-axis-x="${i}"]`)
+            if (axisX) {
+                axisX.dataset.valueX = gamepad.axes[i].toFixed(1)
+                this.updateStick(axisX)
+                continue
+            }
+            const axisY = document.querySelector(`[data-axis-y="${i}"]`)
+            if (axisY) {
+                axisY.dataset.valueY = gamepad.axes[i].toFixed(1)
+                this.updateStick(axisY)
+                continue
+            }
+            const axisZ = document.querySelector(`[data-axis-z="${i}"]`)
+            if (axisZ) {
+                axisZ.dataset.valueZ = gamepad.axes[i].toFixed(1)
+                this.updateStick(axisZ)
+                continue
+            }
+        }
+
         window.requestAnimationFrame(this.renderGamepad.bind(this))
+    }
+
+    updateStick(stick) {
+        // Applying some style on each stick directly until css attr() is supported, which is when we'll be able to read
+        // and apply data-value-[xyz] directly from our gamepad.css stylesheet. https://caniuse.com/css3-attr
+        const marginTop = `${stick.dataset.valueY * 30}px`
+        const marginLeft = `${stick.dataset.valueX * 30}px`
+        if (marginTop != stick.style.marginTop || marginLeft != stick.style.marginLeft) {
+            stick.style.marginTop = marginTop
+            stick.style.marginLeft = marginLeft
+            stick.style.transform = `rotateX(${stick.dataset.valueY * -30}deg) rotateY(${stick.dataset.valueX * 30}deg)`
+        }
     }
 
     onGamepadConnected(event) {

@@ -173,6 +173,9 @@
     background-size: 89px;
     height: 89px;
     width: 89px;
+    /* https://caniuse.com/css3-attr
+    margin-top: attr(data-value-y);
+    margin-left: attr(data-value-x); */
 }
 
 #gamepad .stick[data-pressed="true"] {
@@ -186,7 +189,7 @@
 
 #gamepad .stick.right {
     top: 25px;
-    right: 25px;
+    left: 264px;
 }
 
 #gamepad .arrows {
