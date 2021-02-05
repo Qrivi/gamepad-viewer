@@ -24,11 +24,10 @@ class Gamepad {
     }
 
     renderGamepad() {
-        const gamepads = navigator.getGamepads()
-        if (!gamepads || !gamepads.length)
+        const gamepad = navigator.getGamepads()?.[0]
+        if (!gamepad)
             return
 
-        const gamepad = gamepads[0]
         // Handle button presses
         for (let i = 0; i < gamepad.buttons.length; i++) {
             const button = document.querySelector(`[data-button="${i}"]`)
