@@ -20,14 +20,11 @@
     height: 100%;
     background: url(triggers.svg);
     background-size: 186px;
+    transform-origin: bottom;
 }
 
 #gamepad .trigger[data-pressed="true"] {
-    background-position-y: -84px !important;
-}
-
-#gamepad .trigger[data-value="0"] {
-    opacity: 0;
+    background-position-y: -85px !important;
 }
 
 #gamepad .trigger.left {
@@ -57,6 +54,8 @@
 
 #gamepad .bumper[data-pressed="true"] {
     background-position-y: -23px;
+    height: 15px;
+    margin-top: 5px;
 }
 
 #gamepad .bumper.left {
