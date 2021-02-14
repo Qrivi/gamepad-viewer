@@ -1,7 +1,13 @@
 class Gamepad {
     constructor() {
+        this.lowPrecision = 1
+        this.highPrecision = 3
+
         // Styles available in this project
         this.styles = ['ds4']
+
+        // Last recorded gamepad timestamp
+        this.timestamp = 0
 
         // Bind listeners
         window.addEventListener("gamepadconnected", this.onGamepadConnected.bind(this));
@@ -28,38 +34,41 @@ class Gamepad {
         if (!gamepad)
             return
 
-        // Handle button presses
-        for (let i = 0; i < gamepad.buttons.length; i++) {
-            const button = document.querySelector(`[data-button="${i}"]`)
-            if (button) {
-                button.dataset.pressed = gamepad.buttons[i].pressed
-                button.dataset.value = gamepad.buttons[i].value.toFixed(2)
-                if (button.classList.contains("trigger")) {
-                    this.updateTrigger(button)
+        if (this.timestamp != gamepad.timestamp.toFixed()) {
+            // Handle button presses
+            for (let i = 0; i < gamepad.buttons.length; i++) {
+                const button = document.querySelector(`[data-button="${i}"]`)
+                if (button) {
+                    button.dataset.pressed = gamepad.buttons[i].pressed
+                    button.dataset.value = gamepad.buttons[i].value.toFixed(this.highPrecision)
+                    if (button.classList.contains("trigger")) {
+                        this.updateTrigger(button)
+                    }
+                }
+            }
+            // Handle joystick motion
+            for (let i = 0; i < gamepad.axes.length; i++) {
+                const axisX = document.querySelector(`[data-axis-x="${i}"]`)
+                if (axisX) {
+                    axisX.dataset.valueX = gamepad.axes[i].toFixed(this.highPrecision)
+                    this.updateStick(axisX)
+                    continue
+                }
+                const axisY = document.querySelector(`[data-axis-y="${i}"]`)
+                if (axisY) {
+                    axisY.dataset.valueY = gamepad.axes[i].toFixed(this.highPrecision)
+                    this.updateStick(axisY)
+                    continue
+                }
+                const axisZ = document.querySelector(`[data-axis-z="${i}"]`)
+                if (axisZ) {
+                    axisZ.dataset.valueZ = gamepad.axes[i].toFixed(this.highPrecision)
+                    this.updateStick(axisZ)
+                    continue
                 }
             }
         }
-        // Handle joystick motion
-        for (let i = 0; i < gamepad.axes.length; i++) {
-            const axisX = document.querySelector(`[data-axis-x="${i}"]`)
-            if (axisX) {
-                axisX.dataset.valueX = gamepad.axes[i].toFixed(2)
-                this.updateStick(axisX)
-                continue
-            }
-            const axisY = document.querySelector(`[data-axis-y="${i}"]`)
-            if (axisY) {
-                axisY.dataset.valueY = gamepad.axes[i].toFixed(2)
-                this.updateStick(axisY)
-                continue
-            }
-            const axisZ = document.querySelector(`[data-axis-z="${i}"]`)
-            if (axisZ) {
-                axisZ.dataset.valueZ = gamepad.axes[i].toFixed(2)
-                this.updateStick(axisZ)
-                continue
-            }
-        }
+        this.timestamp = gamepad.timestamp.toFixed()
 
         window.requestAnimationFrame(this.renderGamepad.bind(this))
     }
@@ -74,6 +83,8 @@ class Gamepad {
             stick.style.marginLeft = marginLeft
             stick.style.transform = `rotateX(${stick.dataset.valueY * -30}deg) rotateY(${stick.dataset.valueX * 30}deg)`
         }
+
+        stick.dataset.value = ((Math.abs(stick.dataset.valueX || 0) + Math.abs(stick.dataset.valueY || 0) + Math.abs(stick.dataset.valueZ || 0)) / stick.dataset.axes).toFixed(this.lowPrecision)
     }
 
     updateTrigger(trigger) {
