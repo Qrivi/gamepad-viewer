@@ -6,10 +6,11 @@ body {
     padding: 0;
     overflow: hidden;
     font: 0.9em/1.5em sans-serif;
+    color: #fff;
 }
 
 iframe {
-    background: rebeccapurple;
+    background: url(./assets/blueprint.png);
     width: 100vw;
     height: 100vh;
 }
@@ -44,8 +45,64 @@ iframe {
 }
 
 #configurator {
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    height: 54px;
+    padding: 0 50px;
+    overflow: hidden;
+    background: #222;
+    display: grid;
+    grid-template-columns: 36px auto 36px 36px 36px;
+    grid-template-rows: auto;
+    column-gap: 10px;
+    justify-content: stretch;
+    align-content: stretch;
+    justify-items: start;
+    align-items: center;
+    border-bottom: solid 2px #eeae41;
+}
+
+#configurator img {
+    max-height: 28px;
+}
+
+#configurator h1 {
+    position: relative;
+    font-weight: 400;
+    font-size: 1em;
+}
+
+#configurator h1::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100px;
+    background: #eeae41;
+    transform: translate(50px, -33px) rotate(10deg);
+}
+
+#configurator button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+
+#configurator button:hover {
+    opacity: 0.75;
+}
+
+#configurator button img {
+    width: 20px;
+}
+
+#configurator button.share img {
+    padding: 1px 0 3px;
 }
