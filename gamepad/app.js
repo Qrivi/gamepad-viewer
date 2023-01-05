@@ -32,12 +32,14 @@ class Gamepad {
             const link = document.createElement("link");
             link.rel = "stylesheet";
             link.href = `./templates/${template}/gamepad.css`;
+            document.head.appendChild(link);
             document.querySelector("#unloaded")?.remove();
         }
         if (css) {
             const link = document.createElement("link");
             link.rel = "stylesheet";
             link.href = new URL(css);
+            document.head.appendChild(link);
             document.querySelector("#unloaded")?.remove();
         }
         this.index = player ? player - 1 : 0;
