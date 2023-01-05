@@ -1,26 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gamepad</title>
-        <link rel="stylesheet" href="./app.css">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gamepad Configurator</title>
+        <link rel="stylesheet" href="./app.css" />
         <link rel="icon" type="image/png" href="./assets/icon.png" />
     </head>
     <body>
-        <div id="configurator">
-            <img src="./assets/icon.png" alt="Gamepad Viewer">
-            <h1>Gamepad</h1>
-            <button class="users">
-                <img src="./assets/users.png">
-            </button>
-            <button class="settings">
-                <img src="./assets/settings.png">
-            </button>
-            <button class="share">
-                <img src="./assets/share.png">
-            </button>
-        </div>
-        <iframe src="./app.html?style=ds4" frameborder="0"></iframe>
+        <main>
+            <header>
+                <h1>Gamepad Configurator</h1>
+                <div>
+                    <h2>Design</h2>
+                    <p>
+                        The controller design you want to use for your gamepad.
+                    </p>
+                    <select name="style" id="style">
+                        <option value="ds4">DualShock 4</option>
+                        <option value="win93">Windows 93</option>
+                        <option value="custom">Custom CSS...</option>
+                    </select>
+                </div>
+                <div id="custom" class="collapsed">
+                    <h2>Custom CSS</h2>
+                    <p>Path to a costom CSS file to load and use.</p>
+                    <input
+                        id="cssPath"
+                        type="url"
+                        placeholder="https://custom.styles/file.css"
+                    />
+                </div>
+                <div>
+                    <h2>Player</h2>
+                    <p>
+                        If you have multiple gamepads connected, pick the one to
+                        listen to.
+                    </p>
+                    <select id="player">
+                        <option value="1">Player 1</option>
+                        <option value="2">Player 2</option>
+                        <option value="3">Player 3</option>
+                        <option value="4">Player 4</option>
+                    </select>
+                </div>
+                <div id="url">
+                    <h2>URL</h2>
+                    <p>
+                        The generated URL to use in OBS to display the current
+                        gamepad.
+                    </p>
+                    <input readonly id="framePath" type="url" />
+                    <button id="copy">Copy</button>
+                </div>
+            </header>
+            <iframe allowtransparency="true" frameborder="0"></iframe>
+        </main>
+        <script>
+            const styleSelector = document.querySelector("#style");
+            const cssPath = document.querySelector("#cssPath");
+            const customBlock = document.querySelector("#custom");
+            const playerSelector = document.querySelector("#player");
+            const framePath = document.querySelector("#framePath");
+            const gamepadFrame = document.querySelector("iframe");
+
+            const render = () => {
+                const style =
+                    styleSelector.value ??
+                    styleSelector.firstElementChild.value;
+                const player =
+                    playerSelector.value ??
+                    playerSelector.firstElementChild.value;
+
+                const url = new URL("app.html", window.location.href);
+
+                // Set style
+                if (style === "custom") {
+                    customBlock.classList.remove("collapsed");
+                    url.searchParams.set("style", cssPath.value);
+                } else {
+                    customBlock.classList.add("collapsed");
+                    url.searchParams.set("style", style);
+                }
+                // Set player
+                url.searchParams.set("player", player);
+
+                framePath.value = url;
+                gamepadFrame.setAttribute("src", url);
+            };
+
+            styleSelector.addEventListener("change", render);
+            cssPath.addEventListener("input", render);
+            playerSelector.addEventListener("change", render);
+            render();
+
+            const copyButton = document.querySelector("button#copy");
+            copyButton.addEventListener("click", () => {
+                framePath.select();
+                document.execCommand("copy");
+                copyButton.textContent = "✅";
+                window.setTimeout(() => {
+                    copyButton.textContent = "Copy";
+                }, 999);
+            });
+        </script>
     </body>
 </html>

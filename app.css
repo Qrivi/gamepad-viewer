@@ -1,18 +1,19 @@
-body {
-    background: transparent;
-    box-sizing: border-box;
-    height: 100vh;
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap");
+
+* {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    font: 0.9em/1.5em sans-serif;
-    color: #fff;
+    box-sizing: border-box;
 }
 
-iframe {
-    background: url(./assets/blueprint.png);
+body {
+    background: transparent;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
+    font: 0.9em/1.5em Rubik, sans-serif;
+    color: #fff;
+    color-scheme: dark;
 }
 
 .warning {
@@ -22,7 +23,7 @@ iframe {
     border: solid 3px rgb(255, 155, 55);
     border-radius: 10px;
     padding: 20px;
-    width: 244px;
+    width: 285px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -44,65 +45,84 @@ iframe {
     transform: translate(-50%, -50%);
 }
 
-#configurator {
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 54px;
-    padding: 0 50px;
-    overflow: hidden;
-    background: #222;
+main {
+    background: url(./assets/blueprint.png);
+    width: 100vw;
+    height: 100vh;
     display: grid;
-    grid-template-columns: 36px auto 36px 36px 36px;
+    grid-template-columns: 360px auto;
     grid-template-rows: auto;
-    column-gap: 10px;
-    justify-content: stretch;
-    align-content: stretch;
-    justify-items: start;
-    align-items: center;
-    border-bottom: solid 2px #eeae41;
+    justify-items: stretch;
+    align-items: stretch;
 }
 
-#configurator img {
-    max-height: 28px;
+iframe {
+    color-scheme: light;
 }
 
-#configurator h1 {
-    position: relative;
-    font-weight: 400;
-    font-size: 1em;
+header {
+    padding: 50px 30px 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #222;
+    border-right: solid 2px #eeae41;
 }
 
-#configurator h1::after {
+header h1 {
+    background: url(./assets/icon.png) no-repeat;
+    background-size: contain;
+    padding: 5px 0 5px 55px;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+header div:first-of-type::before,
+header div:last-of-type::before {
     content: " ";
     display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 2px;
-    height: 100px;
+    width: 200%;
+    height: 2px;
+    margin: 70px 0;
     background: #eeae41;
-    transform: translate(50px, -33px) rotate(10deg);
+    transform: rotate(-2deg) translateX(-33%);
 }
 
-#configurator button {
-    background: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: opacity 0.5s;
+header div {
+    position: relative;
+    padding: 0 0 10px;
+    max-height: 100vh;
+    transform-origin: top center;
+    transition: transform 500ms, max-height 250ms;
 }
 
-#configurator button:hover {
-    opacity: 0.75;
+header div.collapsed {
+    max-height: 0;
+    overflow: hidden;
+    transform: rotateX(90deg);
 }
 
-#configurator button img {
-    width: 20px;
+header h2 {
+    font-weight: 500;
+    font-size: 1.2em;
+    margin: 2em 0 0.5em;
 }
 
-#configurator button.share img {
-    padding: 1px 0 3px;
+header p {
+    font-size: 0.9em;
+    margin: 0 0 1.2em;
+}
+
+header button,
+header input,
+header select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #eeae41;
+    border-radius: 0;
+    outline: none !important;
+}
+
+header button#copy {
+    float: right;
+    width: 70px;
 }

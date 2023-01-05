@@ -1,6 +1,6 @@
 #gamepad {
-    height: 630px;
     width: 750px;
+    height: 630px;
     background-image: url(base.svg);
     background-position: center;
     background-repeat: no-repeat;
@@ -128,18 +128,18 @@
 }
 
 #gamepad .pad.down {
-    left: 44px;
-    bottom: 2px;
     width: 36px;
     height: 52px;
+    bottom: 2px;
+    left: 44px;
 }
 
 #gamepad .pad.up {
     background-position: -37px 0;
-    left: 44px;
-    top: 2px;
     width: 36px;
     height: 52px;
+    top: 2px;
+    left: 44px;
 }
 
 #gamepad .pad.left {
@@ -182,8 +182,8 @@
     background-position-y: -89px;
 }
 
-#gamepad .stick[data-value]:not([data-value="0.0"],[data-value="0.1"]) {
-    box-shadow:inset 0 0 0 5px #fff;
+#gamepad .stick[data-value]:not([data-value="0.0"], [data-value="0.1"]) {
+    box-shadow: inset 0 0 0 5px #fff;
 }
 
 #gamepad .stick.left {
