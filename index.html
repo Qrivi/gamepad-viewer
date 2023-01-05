@@ -4,27 +4,28 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Gamepad Configurator</title>
-        <link rel="stylesheet" href="./app.css" />
-        <link rel="icon" type="image/png" href="./assets/icon.png" />
+        <link rel="stylesheet" href="./gamepad/app.css" />
+        <link rel="icon" type="image/png" href="./gamepad/assets/icon.png" />
     </head>
     <body>
         <main>
             <header>
                 <h1>Gamepad Configurator</h1>
                 <div>
-                    <h2>Design</h2>
-                    <p>
-                        The controller design you want to use for your gamepad.
-                    </p>
-                    <select name="style" id="style">
+                    <h2>Design Template</h2>
+                    <p>The base design you want to use for your gamepad.</p>
+                    <select id="template">
+                        <option value="">None</option>
                         <option value="ds4">DualShock 4</option>
                         <option value="win93">Windows 93</option>
-                        <option value="custom">Custom CSS...</option>
                     </select>
                 </div>
-                <div id="custom" class="collapsed">
+                <div>
                     <h2>Custom CSS</h2>
-                    <p>Path to a costom CSS file to load and use.</p>
+                    <p>
+                        Path to a custom stylesheet to load and use, to add on
+                        top of the template.
+                    </p>
                     <input
                         id="cssPath"
                         type="url"
@@ -57,7 +58,7 @@
             <iframe allowtransparency="true" frameborder="0"></iframe>
         </main>
         <script>
-            const styleSelector = document.querySelector("#style");
+            const templateSelector = document.querySelector("#template");
             const cssPath = document.querySelector("#cssPath");
             const customBlock = document.querySelector("#custom");
             const playerSelector = document.querySelector("#player");
@@ -65,35 +66,37 @@
             const gamepadFrame = document.querySelector("iframe");
 
             const render = () => {
-                const style =
-                    styleSelector.value ??
-                    styleSelector.firstElementChild.value;
+                const url = new URL("gamepad", window.location.href);
+
+                // Set gamepad template
+                const template =
+                    templateSelector.value ??
+                    templateSelector.firstElementChild.value;
+                if (template?.length)
+                    url.searchParams.set("template", template);
+
+                // Set custom stylesheet path
+                const css = cssPath.value;
+                if (css?.length) url.searchParams.set("css", css);
+
+                // Set player/gamepad index
                 const player =
                     playerSelector.value ??
                     playerSelector.firstElementChild.value;
+                if (player != 1) url.searchParams.set("player", player);
 
-                const url = new URL("app.html", window.location.href);
-
-                // Set style
-                if (style === "custom") {
-                    customBlock.classList.remove("collapsed");
-                    url.searchParams.set("style", cssPath.value);
-                } else {
-                    customBlock.classList.add("collapsed");
-                    url.searchParams.set("style", style);
-                }
-                // Set player
-                url.searchParams.set("player", player);
-
+                // Adjust iframe src
                 framePath.value = url;
                 gamepadFrame.setAttribute("src", url);
             };
 
-            styleSelector.addEventListener("change", render);
+            // Add listeners
+            templateSelector.addEventListener("change", render);
             cssPath.addEventListener("input", render);
             playerSelector.addEventListener("change", render);
             render();
 
+            // Quick and dirty copy to clipboard button
             const copyButton = document.querySelector("button#copy");
             copyButton.addEventListener("click", () => {
                 framePath.select();

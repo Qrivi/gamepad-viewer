@@ -3,9 +3,6 @@ class Gamepad {
         this.lowPrecision = 1;
         this.highPrecision = 3;
 
-        // Styles available in this project
-        this.styles = ["ds4", "ds5", "win93"];
-
         // Default gamepad to listen to
         this.index = 0;
 
@@ -22,24 +19,27 @@ class Gamepad {
             this.onGamepadDisconnected.bind(this)
         );
 
-        this.loadStyle();
+        this.loadGamepad();
     }
 
-    loadStyle() {
+    loadGamepad() {
         const url = new URL(window.location.href);
-        const style = url.searchParams.get("style") ?? this.styles[0];
-        const player = url.searchParams.get("player") ?? 1;
+        const template = url.searchParams.get("template");
+        const css = url.searchParams.get("css");
+        const player = url.searchParams.get("player");
 
-        // Load stylesheet
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = this.styles.includes(style)
-            ? `./styles/${style}/gamepad.css`
-            : new URL(style);
-        document.head.appendChild(link);
-        document.querySelector("#unloaded").remove();
-
-        // Set gamepad index
+        if (template) {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = `./templates/${template}/gamepad.css`;
+            document.querySelector("#unloaded")?.remove();
+        }
+        if (css) {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = new URL(css);
+            document.querySelector("#unloaded")?.remove();
+        }
         this.index = player ? player - 1 : 0;
     }
 
@@ -133,7 +133,7 @@ class Gamepad {
     onGamepadDisconnected(event) {
         if (event.gamepad.index === this.index) {
             document.querySelector("#undetected").style.visibility = "visible";
-            console.log("bye");
+            console.log("bye x");
         }
     }
 }

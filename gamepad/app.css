@@ -14,6 +14,7 @@ body {
     font: 0.9em/1.5em Rubik, sans-serif;
     color: #fff;
     color-scheme: dark;
+    user-select: none;
 }
 
 .warning {
@@ -90,15 +91,6 @@ header div:last-of-type::before {
 header div {
     position: relative;
     padding: 0 0 10px;
-    max-height: 100vh;
-    transform-origin: top center;
-    transition: transform 500ms, max-height 250ms;
-}
-
-header div.collapsed {
-    max-height: 0;
-    overflow: hidden;
-    transform: rotateX(90deg);
 }
 
 header h2 {
@@ -116,7 +108,7 @@ header button,
 header input,
 header select {
     width: 100%;
-    padding: 5px;
+    padding: 0.4em 0.5em;
     border: 1px solid #eeae41;
     border-radius: 0;
     outline: none !important;
@@ -124,5 +116,6 @@ header select {
 
 header button#copy {
     float: right;
-    width: 70px;
+    width: 60px;
+    height: 35px;
 }
